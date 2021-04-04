@@ -16,6 +16,7 @@ class NetworkResource extends JsonResource
     {
         $resource = array(
             'Nome'=>$this->name,
+            'E-mail'=>$this->email,
             'Telefone'=>$this->phone,
             'Local' => "{$this->city}/{$this->uf}",
             

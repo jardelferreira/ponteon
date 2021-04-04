@@ -26,6 +26,7 @@ class NetworkRequest extends FormRequest
         return [
             'name' => 'required|max:55|min:8',
             'phone' => 'required|unique:networks,phone|max:15|min:10',
+            'email' => 'required|unique:networks,email|max:55|email',
             'city' => 'required|max:55',
             'uf' => 'required|max:2',
             'network_id' => 'nullable|integer',

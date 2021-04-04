@@ -1995,6 +1995,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2007,6 +2015,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       form: new Form({
         id: "",
         name: "",
+        email: "",
         phone: "",
         uf: "",
         city: "",
@@ -2050,7 +2059,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.form.fill(affiliate);
     },
     updateAffiliate: function updateAffiliate() {
-      this.form.put("api/" + this.form.id).then(function () {
+      this.form.put("api/affiliate" + this.form.id).then(function () {
         Toast.fire({
           icon: "success",
           title: "Affiliate updated successfully"
@@ -2075,7 +2084,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get("api/").then(function (data) {
+                return axios.get("api/affiliate").then(function (data) {
                   return _this2.affiliates = data.data.data;
                 });
 
@@ -2110,12 +2119,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this4 = this;
 
       this.$Progress.start();
-      this.form.post("api/").then(function () {
+      this.form.post("api/affiliate").then(function () {
         Fire.$emit("AfterCreatedAffiliateLoadIt"); //custom events
 
         Toast.fire({
           icon: "success",
-          title: "Afiliado cadastrado com sucesso!"
+          title: "Empresário cadastrado com sucesso!"
         });
 
         _this4.$Progress.finish();
@@ -2130,7 +2139,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       Swal.fire({
         title: "Você tem certeza?",
-        text: "Ao excluir este filiado toda rede pertencente a ele será excluída.",
+        text: "Esta ação irá excluir definitivamente este empresário.",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -2140,8 +2149,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          _this5.form["delete"]("api/" + id).then(function (response) {
-            Swal.fire("Excluido!", "Afiliado excluído com sucesso!", "success");
+          _this5.form["delete"]("api/affiliate/" + id).then(function (response) {
+            Swal.fire("Excluido!", "Empresário excluído com sucesso!", "success");
 
             _this5.loadAffiliates();
           })["catch"](function () {
@@ -2158,7 +2167,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     phoneMask: function phoneMask(e) {
       if (e.target.value.length >= 11) {
         this.x = e.target.value.replace(/\D/g, '').match(/(\d{2})(\d{5})(\d{4})/);
-        this.form.phone = "(".concat(this.x[1], ")").concat(this.x[2], "-").concat(this.x[3]);
+        this.form.phone = "(".concat(this.x[1], ") ").concat(this.x[2], "-").concat(this.x[3]);
         Toast.fire({
           icon: "info",
           title: "Número de Telefone formatado!"
@@ -2345,7 +2354,7 @@ Vue.filter("strToUpper", function (text) {
  //Import Moment
 
 Vue.filter("formatDate", function (date) {
-  return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format('MMMM Do YYYY');
+  return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).locale("pt-BR").format('L - LT');
 });
 
 /***/ }),
@@ -2390,12 +2399,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
-  path: '/',
-  component: _components_NetworkComponent_vue__WEBPACK_IMPORTED_MODULE_0__.default
-}, {
   path: '/network/:network',
   name: 'network',
   component: _components_AffiliateComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default
+}, {
+  path: '/',
+  component: _components_NetworkComponent_vue__WEBPACK_IMPORTED_MODULE_0__.default
 }];
 
 /***/ }),
@@ -65806,8 +65815,6 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
       _c(
         "div",
         {
@@ -65823,35 +65830,20 @@ var render = function() {
                 _c(
                   "router-link",
                   { staticClass: "nav-link h3", attrs: { to: "/" } },
-                  [_vm._v("Rede")]
+                  [_vm._v("Empresários")]
                 )
               ],
               1
             )
           ]),
           _vm._v(" "),
-          _vm._m(2)
+          _vm._m(1)
         ]
       )
     ]
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-      _c("img", {
-        attrs: {
-          src: "/docs/4.6/assets/brand/bootstrap-solid.svg",
-          width: "30",
-          height: "30",
-          alt: ""
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -65882,9 +65874,13 @@ var staticRenderFns = [
           "a",
           {
             staticClass: "nav-link h3",
-            attrs: { href: "#", target: "_blank", rel: "noopener noreferrer" }
+            attrs: {
+              href: "https://github.com/jardelferreira",
+              target: "_blank",
+              rel: "noopener noreferrer"
+            }
           },
-          [_vm._v("Jardel Ferreira")]
+          [_vm._v("Github:Jardel Ferreira")]
         )
       ])
     ])
@@ -65916,7 +65912,7 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header d-flex" }, [
         _c("h2", { staticClass: "card-title" }, [
-          _vm._v("Lista de Associados")
+          _vm._v("Lista de Empresários")
         ]),
         _vm._v(" "),
         _c(
@@ -65926,7 +65922,7 @@ var render = function() {
             attrs: { "data-toggle": "modal", "data-target": "#addNew" },
             on: { click: _vm.openModalWindow }
           },
-          [_vm._v("\n                NOVO CADASTRO\n            ")]
+          [_vm._v("\n                CADASTRAR NOVO EMPRESÁRIO\n            ")]
         )
       ]),
       _vm._v(" "),
@@ -65935,7 +65931,7 @@ var render = function() {
           ? _c(
               "p",
               { staticClass: "h2 mx-auto text-center font-weight-bold" },
-              [_vm._v("Não há Afiliados Cadastrado.")]
+              [_vm._v("Não há Empresários Cadastrado.")]
             )
           : _c("table", { staticClass: "table table-hover" }, [
               _c(
@@ -65946,6 +65942,8 @@ var render = function() {
                   _vm._l(_vm.affiliates, function(affiliate) {
                     return _c("tr", { key: affiliate.id }, [
                       _c("td", [_vm._v(_vm._s(affiliate.name))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(affiliate.email))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(affiliate.phone))]),
                       _vm._v(" "),
@@ -65963,11 +65961,7 @@ var render = function() {
                       _vm._v(" "),
                       affiliate.godfather
                         ? _c("td", [_vm._v(_vm._s(affiliate.godfather.name))])
-                        : _c("td", [
-                            _c("a", { attrs: { href: "#" } }, [
-                              _vm._v("Apadrinhar")
-                            ])
-                          ]),
+                        : _c("td", [_c("a", { attrs: { href: "#" } })]),
                       _vm._v(" "),
                       _c("td", [
                         _c(
@@ -66056,7 +66050,7 @@ var render = function() {
                         staticClass: "modal-title",
                         attrs: { id: "addNewLabel" }
                       },
-                      [_vm._v("Cadastrar novo afiliado")]
+                      [_vm._v("Cadastrar novo empresário")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -66073,7 +66067,7 @@ var render = function() {
                         staticClass: "modal-title",
                         attrs: { id: "addNewLabel" }
                       },
-                      [_vm._v("Atualizar afiliado")]
+                      [_vm._v("Atualizar empresário")]
                     ),
                     _vm._v(" "),
                     _vm._m(1)
@@ -66140,6 +66134,55 @@ var render = function() {
                             _vm._v(" "),
                             _c("has-error", {
                               attrs: { form: _vm.form, field: "name" }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c("label", { attrs: { for: "email" } }, [
+                              _vm._v("E-mail:")
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.email,
+                                  expression: "form.email"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("email")
+                              },
+                              attrs: {
+                                required: "",
+                                type: "email",
+                                name: "email",
+                                placeholder: "fulano@mail.com"
+                              },
+                              domProps: { value: _vm.form.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: { form: _vm.form, field: "email" }
                             })
                           ],
                           1
@@ -66492,6 +66535,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tr", [
       _c("th", [_vm._v("Nome")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Email")]),
       _vm._v(" "),
       _c("th", [_vm._v("Celular")]),
       _vm._v(" "),

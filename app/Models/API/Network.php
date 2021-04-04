@@ -10,7 +10,7 @@ class Network extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name','phone','city','uf','network_id'];
+    protected $fillable = ['name','phone','city','uf','email', 'network_id'];
 
     public function godfather(){
         return $this->hasOne(Network::class,'id','network_id');

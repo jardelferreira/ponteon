@@ -27,6 +27,7 @@ class NetworkController extends Controller
                
         return Network::create([
             'name' => $request->name,
+            'email' => $request->email,
             'phone' => $request->phone,
             'uf' => $request->uf,
             'city' => $request->city,
@@ -43,6 +44,7 @@ class NetworkController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required',
             'phone' => 'required',
             'uf' => 'required',
             'city' => 'required',
