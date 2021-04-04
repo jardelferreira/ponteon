@@ -14,8 +14,10 @@ require('./customEvents');
 
 //Import View Router
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+import JSONView from 'vue-json-component'
 
+Vue.use(VueRouter)
+Vue.use(JSONView)
 //Import Sweetalert2
 import Swal from 'sweetalert2'
 window.Swal = Swal
@@ -40,6 +42,10 @@ Vue.component(AlertError.name, AlertError)
 
 //Routes
 import { routes } from './routes';
+import Vue from 'vue';
+
+//import components
+Vue.component('navbar-nav',require("./components/NavbarComponent.vue").default)
 
 //Register Routes
 const router = new VueRouter({

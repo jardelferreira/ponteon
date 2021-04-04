@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    '/network' => NetworkController::class
+    '/' => NetworkController::class
 ]);
-Route::get('/network/{afiliate}',[NetworkController::class,'network']);
+Route::get('/network/{filiado}',[NetworkController::class,'network']);
