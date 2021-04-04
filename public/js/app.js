@@ -1995,117 +1995,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2234,7 +2123,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         $("#addNew").modal("hide");
       })["catch"](function (err) {
         console.log(err);
-      }); //this.loadAffiliates();
+      });
     },
     deleteAffiliate: function deleteAffiliate(id) {
       var _this5 = this;
@@ -66037,7 +65926,7 @@ var render = function() {
             attrs: { "data-toggle": "modal", "data-target": "#addNew" },
             on: { click: _vm.openModalWindow }
           },
-          [_vm._v("\n        NOVO CADASTRO\n      ")]
+          [_vm._v("\n                NOVO CADASTRO\n            ")]
         )
       ]),
       _vm._v(" "),
@@ -66046,7 +65935,7 @@ var render = function() {
           ? _c(
               "p",
               { staticClass: "h2 mx-auto text-center font-weight-bold" },
-              [_vm._v("\n        Não há Afiliados Cadastrado.\n      ")]
+              [_vm._v("Não há Afiliados Cadastrado.")]
             )
           : _c("table", { staticClass: "table table-hover" }, [
               _c(
@@ -66107,13 +65996,13 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("\n                Editar\n              ")]
+                          [_vm._v("Editar")]
                         ),
-                        _vm._v("\n              |\n              "),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
-                            staticClass: "btn btn-danger",
+                            staticClass: "btn btn-danger ml-1",
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
@@ -66121,7 +66010,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("\n                Excluir\n              ")]
+                          [_vm._v(" Excluir")]
                         )
                       ])
                     ])
@@ -66167,11 +66056,7 @@ var render = function() {
                         staticClass: "modal-title",
                         attrs: { id: "addNewLabel" }
                       },
-                      [
-                        _vm._v(
-                          "\n                Cadastrar novo afiliado\n              "
-                        )
-                      ]
+                      [_vm._v("Cadastrar novo afiliado")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -66188,11 +66073,7 @@ var render = function() {
                         staticClass: "modal-title",
                         attrs: { id: "addNewLabel" }
                       },
-                      [
-                        _vm._v(
-                          "\n                Atualizar afiliado\n              "
-                        )
-                      ]
+                      [_vm._v("Atualizar afiliado")]
                     ),
                     _vm._v(" "),
                     _vm._m(1)
@@ -66380,13 +66261,7 @@ var render = function() {
                                       key: state.id,
                                       domProps: { value: state.sigla }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                      " +
-                                          _vm._s(state.sigla) +
-                                          "\n                    "
-                                      )
-                                    ]
+                                    [_vm._v(_vm._s(state.sigla))]
                                   )
                                 })
                               ],
@@ -66461,13 +66336,7 @@ var render = function() {
                                       key: city.id,
                                       domProps: { value: city.nome }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                      " +
-                                          _vm._s(city.nome) +
-                                          "\n                    "
-                                      )
-                                    ]
+                                    [_vm._v(_vm._s(city.nome))]
                                   )
                                 })
                               ],
@@ -66485,9 +66354,10 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _vm._v(
-                              "\n                    Selecione um Padrinho:\n                  "
-                            ),
+                            _c("label", { attrs: { for: "network_id" } }, [
+                              _vm._v("Selecione um Padrinho:")
+                            ]),
+                            _vm._v(" "),
                             _c(
                               "select",
                               {
@@ -66541,9 +66411,9 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                      " +
+                                        "\n                                        " +
                                           _vm._s(affiliate.name) +
-                                          "\n                    "
+                                          "\n                                    "
                                       )
                                     ]
                                   )
@@ -66567,11 +66437,7 @@ var render = function() {
                             staticClass: "btn btn-danger",
                             attrs: { type: "button", "data-dismiss": "modal" }
                           },
-                          [
-                            _vm._v(
-                              "\n                  Fechar\n                "
-                            )
-                          ]
+                          [_vm._v("Fechar")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -66588,11 +66454,7 @@ var render = function() {
                             staticClass: "btn btn-primary",
                             attrs: { type: "submit" }
                           },
-                          [
-                            _vm._v(
-                              "\n                  Atualizar\n                "
-                            )
-                          ]
+                          [_vm._v("Atualizar")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -66609,11 +66471,7 @@ var render = function() {
                             staticClass: "btn btn-primary",
                             attrs: { type: "submit" }
                           },
-                          [
-                            _vm._v(
-                              "\n                  Cadastrar\n                "
-                            )
-                          ]
+                          [_vm._v("Cadastrar")]
                         )
                       ])
                     ]
