@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\NetworkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'network' => 'API\NetworkController'
+    '/network' => NetworkController::class
 ]);
+Route::get('/network/{afiliate}',[NetworkController::class,'network']);
