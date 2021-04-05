@@ -28,8 +28,8 @@
                     <td>{{ affiliate.created_at | formatDate }}</td>
                     <td v-if="affiliate.godfather">{{ affiliate.godfather.name }}</td>
                     <td v-else><a href="#"></a></td>
-                    <td>
-                        <a @click="showNetwork(affiliate.id)" href="#">[Ver Rede]</a>
+                    <td class="d-inline">
+                        <a class="btn btn-warning" @click="showNetwork(affiliate.id)" href="#">Ver Rede</a>
                     </td>
                     <td>
                         <a  href="#" class="btn btn-info"  data-id="affiliate.id"  @click="editModalWindow(affiliate)">Editar</a>
@@ -119,8 +119,7 @@ export default {
       affiliates: {},
       cities: {},
       states: {},
-      apiLocalUrl:
-        "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
+      apiLocalUrl: "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
       form: new Form({
         id: "",
         name: "",
@@ -181,7 +180,7 @@ export default {
     loadCities(uf) {
       uf = uf ? uf : this.form.uf;
       this.$Progress.start();
-      axios.get(`${this.apiLocalUrl}/${uf}/municipios`).then((cities) => {
+      axios.get(`${this.apiLocalUrl}/${uf}/municipios?orderBy=nome`).then((cities) => {
           Toast.fire({
             icon: "success",
             title: "Todas as Cidades foram Carregadas.",
@@ -275,7 +274,7 @@ export default {
   }
   },
     mounted(){
-      axios.get(this.apiLocalUrl).then((data) => (this.states = data.data));
+      axios.get(`${this.apiLocalUrl}?orderBy=nome`).then((data) => (this.states = data.data));
 
     },
   created() {

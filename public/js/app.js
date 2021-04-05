@@ -2101,7 +2101,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       uf = uf ? uf : this.form.uf;
       this.$Progress.start();
-      axios.get("".concat(this.apiLocalUrl, "/").concat(uf, "/municipios")).then(function (cities) {
+      axios.get("".concat(this.apiLocalUrl, "/").concat(uf, "/municipios?orderBy=nome")).then(function (cities) {
         Toast.fire({
           icon: "success",
           title: "Todas as Cidades foram Carregadas."
@@ -2193,7 +2193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this6 = this;
 
-    axios.get(this.apiLocalUrl).then(function (data) {
+    axios.get("".concat(this.apiLocalUrl, "?orderBy=nome")).then(function (data) {
       return _this6.states = data.data;
     });
   },
@@ -65963,10 +65963,11 @@ var render = function() {
                         ? _c("td", [_vm._v(_vm._s(affiliate.godfather.name))])
                         : _c("td", [_c("a", { attrs: { href: "#" } })]),
                       _vm._v(" "),
-                      _c("td", [
+                      _c("td", { staticClass: "d-inline" }, [
                         _c(
                           "a",
                           {
+                            staticClass: "btn btn-warning",
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
@@ -65974,7 +65975,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("[Ver Rede]")]
+                          [_vm._v("Ver Rede")]
                         )
                       ]),
                       _vm._v(" "),
