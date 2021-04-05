@@ -31,9 +31,11 @@
                     <td>
                         <button class="btn btn-warning" @click="showNetwork(affiliate.id)" href="#">Ver Rede</button>
                     </td>
-                    <td class="d-inline ">
+                    <td>
+                        <p>
                         <a  href="#" class="btn btn-info"  data-id="affiliate.id"  @click="editModalWindow(affiliate)">Editar</a>
                         <a href="#" class="btn btn-danger ml-1" @click="deleteAffiliate(affiliate.id)"> Excluir</a>
+                        </p>
                     </td>
                 </tr></tbody>
             </table>

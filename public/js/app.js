@@ -2003,6 +2003,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -65979,34 +65981,36 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", { staticClass: "d-inline " }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-info",
-                            attrs: { href: "#", "data-id": "affiliate.id" },
-                            on: {
-                              click: function($event) {
-                                return _vm.editModalWindow(affiliate)
+                      _c("td", [
+                        _c("p", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-info",
+                              attrs: { href: "#", "data-id": "affiliate.id" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.editModalWindow(affiliate)
+                                }
                               }
-                            }
-                          },
-                          [_vm._v("Editar")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "btn btn-danger ml-1",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteAffiliate(affiliate.id)
+                            },
+                            [_vm._v("Editar")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-danger ml-1",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteAffiliate(affiliate.id)
+                                }
                               }
-                            }
-                          },
-                          [_vm._v(" Excluir")]
-                        )
+                            },
+                            [_vm._v(" Excluir")]
+                          )
+                        ])
                       ])
                     ])
                   })
