@@ -65981,7 +65981,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [
                         _c(
-                          "a",
+                          "button",
                           {
                             staticClass: "btn btn-info d-inline",
                             attrs: { href: "#", "data-id": "affiliate.id" },
@@ -65995,7 +65995,7 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c(
-                          "a",
+                          "button",
                           {
                             staticClass: "btn btn-danger ml-1 d-inline",
                             attrs: { href: "#" },
