@@ -25,11 +25,18 @@ class NetworkRequest extends FormRequest
     {
         return [
             'name' => 'required|max:55|min:8',
-            'phone' => 'required|unique:networks,phone|max:15|min:10',
-            'email' => 'required|unique:networks,email|max:55|email',
+            'phone' => "required|unique:networks,phone,{$this->segment(3)},id|max:15|min:10",
+            'email' => "required|unique:networks,email,{$this->segment(3)},id|max:55|email",
             'city' => 'required|max:55',
             'uf' => 'required|max:2',
-            'network_id' => 'nullable|integer',
+            'network_id' => "nullable|integer|different:id",
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'network_id.different' => 'Você não pode escolher a sí mesmo como padrinho.',
         ];
     }
 }

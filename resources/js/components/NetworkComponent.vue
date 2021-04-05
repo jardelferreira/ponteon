@@ -151,11 +151,11 @@ export default {
     },
     updateAffiliate() {
       this.form
-        .put("api/affiliate" + this.form.id)
+        .put("api/affiliate/" + this.form.id)
         .then(() => {
           Toast.fire({
             icon: "success",
-            title: "Affiliate updated successfully",
+            title: "Dados Atualizados com sucesso!",
           });
 
           Fire.$emit("AfterCreatedAffiliateLoadIt");

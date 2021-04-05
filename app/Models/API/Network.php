@@ -18,6 +18,6 @@ class Network extends Model
 
     public function filiados()
     {
-        return $this->hasMany(Network::class,'network_id','id')->with('filiados');
+        return $this->hasMany(Network::class,'network_id','id')->with('filiados')->where('id','<>',$this->id);
     }
 }

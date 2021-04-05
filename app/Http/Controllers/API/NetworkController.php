@@ -17,14 +17,7 @@ class NetworkController extends Controller
 
     public function store(NetworkRequest $request)
     {
-        //  $this->validate($request, [
-        //     'name' => 'required|max:55|min:8',
-        //     'phone' => 'required|unique:networks,phone|max:15|min:10',
-        //     'city' => 'required|max:55',
-        //     'uf' => 'required|max:2',
-        //     'network_id' => 'nullable',
-        // ]);
-               
+                
         return Network::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -40,15 +33,8 @@ class NetworkController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(NetworkRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'uf' => 'required',
-            'city' => 'required',
-        ]);
 
         $network = Network::findOrFail($id);
 
@@ -60,7 +46,7 @@ class NetworkController extends Controller
         $network = Network::findOrFail($id);
         $network->delete();
         return response()->json([
-            'message' => 'Network deleted successfully'
+            'message' => 'Empresário deletado com sucesso!'
         ]);
     }
     public function network($filiado)

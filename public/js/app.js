@@ -2059,10 +2059,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.form.fill(affiliate);
     },
     updateAffiliate: function updateAffiliate() {
-      this.form.put("api/affiliate" + this.form.id).then(function () {
+      this.form.put("api/affiliate/" + this.form.id).then(function () {
         Toast.fire({
           icon: "success",
-          title: "Affiliate updated successfully"
+          title: "Dados Atualizados com sucesso!"
         });
         Fire.$emit("AfterCreatedAffiliateLoadIt");
         $("#addNew").modal("hide");
