@@ -65933,87 +65933,100 @@ var render = function() {
               { staticClass: "h2 mx-auto text-center font-weight-bold" },
               [_vm._v("Não há Empresários Cadastrado.")]
             )
-          : _c("table", { staticClass: "table table-hover" }, [
-              _c(
-                "tbody",
-                [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._l(_vm.affiliates, function(affiliate) {
-                    return _c("tr", { key: affiliate.id }, [
-                      _c("td", [_vm._v(_vm._s(affiliate.name))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(affiliate.email))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(affiliate.phone))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(affiliate.city) + "/" + _vm._s(affiliate.uf)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          _vm._s(_vm._f("formatDate")(affiliate.created_at))
-                        )
-                      ]),
-                      _vm._v(" "),
-                      affiliate.godfather
-                        ? _c("td", [_vm._v(_vm._s(affiliate.godfather.name))])
-                        : _c("td", [_c("a", { attrs: { href: "#" } })]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-warning",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.showNetwork(affiliate.id)
+          : _c(
+              "table",
+              { staticClass: "table table-responsive table-striped" },
+              [
+                _c(
+                  "tbody",
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.affiliates, function(affiliate) {
+                      return _c("tr", { key: affiliate.id }, [
+                        _c("td", [_vm._v(_vm._s(affiliate.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(affiliate.email))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(affiliate.phone))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(affiliate.city) + "/" + _vm._s(affiliate.uf)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(_vm._f("formatDate")(affiliate.created_at))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        affiliate.godfather
+                          ? _c("td", [_vm._v(_vm._s(affiliate.godfather.name))])
+                          : _c("td"),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-warning",
+                              on: {
+                                click: function($event) {
+                                  return _vm.showNetwork(affiliate.id)
+                                }
                               }
-                            }
-                          },
-                          [_vm._v("Ver Rede")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-info d-inline",
-                            attrs: { href: "#", "data-id": "affiliate.id" },
-                            on: {
-                              click: function($event) {
-                                return _vm.editModalWindow(affiliate)
-                              }
-                            }
-                          },
-                          [_vm._v("Editar")]
-                        ),
+                            },
+                            [_vm._v("Ver Rede")]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c(
-                          "button",
+                          "td",
                           {
-                            staticClass: "btn btn-danger ml-1 d-inline",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteAffiliate(affiliate.id)
-                              }
-                            }
+                            staticClass: "btn-group",
+                            attrs: { role: "group" }
                           },
-                          [_vm._v(" Excluir")]
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-info ",
+                                attrs: {
+                                  type: "button",
+                                  "data-id": "affiliate.id"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.editModalWindow(affiliate)
+                                  }
+                                }
+                              },
+                              [_vm._v("Editar")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger ml-1",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteAffiliate(affiliate.id)
+                                  }
+                                }
+                              },
+                              [_vm._v(" Excluir")]
+                            )
+                          ]
                         )
                       ])
-                    ])
-                  })
-                ],
-                2
-              )
-            ]),
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
         _vm._v(" "),
         _c(
           "div",

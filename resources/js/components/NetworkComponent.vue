@@ -9,7 +9,7 @@
         </div>
         <div class="card-body table-responsive p-0">
             <p class="h2 mx-auto text-center font-weight-bold" v-if="affiliates < 1">Não há Empresários Cadastrado.</p>
-            <table v-else class="table table-hover">
+            <table v-else class="table table-responsive table-striped">
                 <tbody><tr>
                     <th>Nome</th>
                     <th>Email</th>
@@ -27,13 +27,13 @@
                     <td>{{ affiliate.city }}/{{ affiliate.uf }}</td>
                     <td>{{ affiliate.created_at | formatDate }}</td>
                     <td v-if="affiliate.godfather">{{ affiliate.godfather.name }}</td>
-                    <td v-else><a href="#"></a></td>
+                    <td v-else></td>
                     <td>
-                        <button class="btn btn-warning" @click="showNetwork(affiliate.id)" href="#">Ver Rede</button>
+                        <button class="btn btn-warning" @click="showNetwork(affiliate.id)">Ver Rede</button>
                     </td>
-                    <td>
-                        <button  href="#" class="btn btn-info d-inline"  data-id="affiliate.id"  @click="editModalWindow(affiliate)">Editar</button>
-                        <button href="#" class="btn btn-danger ml-1 d-inline" @click="deleteAffiliate(affiliate.id)"> Excluir</button>
+                    <td class="btn-group" role="group">
+                        <button type="button"  class="btn btn-info "  data-id="affiliate.id"  @click="editModalWindow(affiliate)">Editar</button>
+                        <button type="button" class="btn btn-danger ml-1" @click="deleteAffiliate(affiliate.id)"> Excluir</button>
                     </td>
                 </tr></tbody>
             </table>
