@@ -65963,9 +65963,9 @@ var render = function() {
                         ? _c("td", [_vm._v(_vm._s(affiliate.godfather.name))])
                         : _c("td", [_c("a", { attrs: { href: "#" } })]),
                       _vm._v(" "),
-                      _c("td", { staticClass: "d-inline" }, [
+                      _c("td", [
                         _c(
-                          "a",
+                          "button",
                           {
                             staticClass: "btn btn-warning",
                             attrs: { href: "#" },
@@ -65979,7 +65979,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", [
+                      _c("td", { staticClass: "d-inline " }, [
                         _c(
                           "a",
                           {
