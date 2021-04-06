@@ -20,4 +20,9 @@ class Network extends Model
     {
         return $this->hasMany(Network::class,'network_id','id')->with('filiados');
     }
+
+    public function available()
+    {
+        return $this->hasMany(Network::class,'network_id','id')->with('filiados')->plunk('id');
+    }
 }

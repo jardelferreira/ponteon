@@ -33,13 +33,13 @@ class NetworkController extends Controller
         //
     }
 
-    public function update(NetworkRequest $request, $id)
-    {
+    // public function update(NetworkRequest $request, $id)
+    // {
 
-        $network = Network::findOrFail($id);
+    //     $network = Network::findOrFail($id);
 
-        $network->update($request->all());
-    }
+    //     $network->update($request->all());
+    // }
 
     public function destroy($id)
     {
@@ -53,5 +53,9 @@ class NetworkController extends Controller
     {
         $network = Network::find($filiado);
         return new NetworkResource($network->with('filiados')->find($filiado));
+    }
+    public function available($filiado)
+    {
+        
     }
 }
