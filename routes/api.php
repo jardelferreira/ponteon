@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/network/{filiado}',[NetworkController::class,'network'])->name('network');
+Route::get('/av/{filiado}',[NetworkController::class,'available'])->name('available');
 Route::apiResources([
     '/affiliate' => NetworkController::class
 ]);

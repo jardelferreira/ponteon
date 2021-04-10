@@ -25,7 +25,7 @@ class NetworkRequest extends FormRequest
     {
         return [
             'name' => 'required|max:55|min:8',
-            'phone' => "required|unique:networks,phone,{$this->segment(3)},id|max:15|min:10",
+            'phone' => "required|unique:networks,phone,{$this->segment(3)},id|max:15|min:14",
             'email' => "required|unique:networks,email,{$this->segment(3)},id|max:55|email",
             'city' => 'required|max:55',
             'uf' => 'required|max:2',

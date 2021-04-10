@@ -2003,12 +2003,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       editMode: false,
       x: "",
       affiliates: {},
+      availables: {},
       cities: {},
       states: {},
       apiLocalUrl: "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
@@ -2052,6 +2060,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     editModalWindow: function editModalWindow(affiliate) {
       this.loadCities(affiliate.uf);
+      this.loadAvailable(affiliate.id);
       this.form.clear();
       this.editMode = true;
       this.form.reset();
@@ -2096,8 +2105,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    loadCities: function loadCities(uf) {
+    loadAvailable: function loadAvailable(id) {
       var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.get("api/av/".concat(id)).then(function (data) {
+                  return _this3.availables = data.data;
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    loadCities: function loadCities(uf) {
+      var _this4 = this;
 
       uf = uf ? uf : this.form.uf;
       this.$Progress.start();
@@ -2107,16 +2137,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           title: "Todas as Cidades foram Carregadas."
         });
 
-        _this3.$Progress.finish();
+        _this4.$Progress.finish();
 
-        _this3.cities = cities.data;
+        _this4.cities = cities.data;
         Fire.$emit("loadedCities"); //custom events
       })["catch"](function () {
         console.log("error...");
       });
     },
     createAffiliate: function createAffiliate() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.$Progress.start();
       this.form.post("api/affiliate").then(function () {
@@ -2127,7 +2157,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           title: "Empresário cadastrado com sucesso!"
         });
 
-        _this4.$Progress.finish();
+        _this5.$Progress.finish();
 
         $("#addNew").modal("hide");
       })["catch"](function (err) {
@@ -2135,7 +2165,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     deleteAffiliate: function deleteAffiliate(id) {
-      var _this5 = this;
+      var _this6 = this;
 
       Swal.fire({
         title: "Você tem certeza?",
@@ -2149,10 +2179,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (result) {
         if (result.value) {
           //Send Request to server
-          _this5.form["delete"]("api/affiliate/" + id).then(function (response) {
+          _this6.form["delete"]("api/affiliate/" + id).then(function (response) {
             Swal.fire("Excluido!", "Empresário excluído com sucesso!", "success");
 
-            _this5.loadAffiliates();
+            _this6.loadAffiliates();
           })["catch"](function () {
             Swal.fire({
               icon: "error",
@@ -2191,19 +2221,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   mounted: function mounted() {
-    var _this6 = this;
+    var _this7 = this;
 
     axios.get("".concat(this.apiLocalUrl, "?orderBy=nome")).then(function (data) {
-      return _this6.states = data.data;
+      return _this7.states = data.data;
     });
   },
   created: function created() {
-    var _this7 = this;
+    var _this8 = this;
 
     this.loadAffiliates();
     Fire.$on("AfterCreatedAffiliateLoadIt", function () {
       //custom events fire on
-      _this7.loadAffiliates();
+      _this8.loadAffiliates();
     });
   }
 });
@@ -66415,69 +66445,143 @@ var render = function() {
                               _vm._v("Selecione um Padrinho:")
                             ]),
                             _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
+                            !_vm.editMode
+                              ? _c(
+                                  "select",
                                   {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.form.network_id,
-                                    expression: "form.network_id"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                class: {
-                                  "is-invalid": _vm.form.errors.has(
-                                    "network_id"
-                                  )
-                                },
-                                attrs: { name: "network_id", id: "network_id" },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.form,
-                                      "network_id",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              [
-                                _c("option", { attrs: { value: "" } }, [
-                                  _vm._v("Selecione...")
-                                ]),
-                                _vm._v(" "),
-                                _vm._l(_vm.affiliates, function(affiliate) {
-                                  return _c(
-                                    "option",
-                                    {
-                                      key: affiliate.id,
-                                      domProps: { value: affiliate.id }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(affiliate.name) +
-                                          "\n                                    "
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.network_id,
+                                        expression: "form.network_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "network_id"
                                       )
-                                    ]
-                                  )
-                                })
-                              ],
-                              2
-                            ),
+                                    },
+                                    attrs: {
+                                      name: "network_id",
+                                      id: "network_id"
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "network_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("option", { attrs: { value: "" } }, [
+                                      _vm._v("Selecione...")
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.affiliates, function(affiliate) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: affiliate.id,
+                                          domProps: { value: affiliate.id }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(affiliate.name) +
+                                              "\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                              : _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.network_id,
+                                        expression: "form.network_id"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: {
+                                      "is-invalid": _vm.form.errors.has(
+                                        "network_id"
+                                      )
+                                    },
+                                    attrs: {
+                                      name: "network_id",
+                                      id: "network_id"
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "network_id",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("option", { attrs: { value: "" } }, [
+                                      _vm._v("Ficar livre")
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.availables, function(available) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: available.id,
+                                          domProps: { value: available.id }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(available.name) +
+                                              "\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
                             _vm._v(" "),
                             _c("has-error", {
                               attrs: { form: _vm.form, field: "network_id" }

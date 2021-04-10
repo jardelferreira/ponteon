@@ -87,18 +87,25 @@
                             </div>
                             <div class="form-group">
                                 <label for="network_id">Selecione um Padrinho:</label> 
-                                <select  name="network_id"  v-model="form.network_id" id="network_id" class="form-control"
+                                <select  name="network_id" v-if="!editMode"  v-model="form.network_id" id="network_id" class="form-control"
                                     :class="{ 'is-invalid': form.errors.has('network_id') }">
                                     <option value="">Selecione...</option>
                                     <option v-for="affiliate in affiliates" :key="affiliate.id" v-bind:value="affiliate.id">
                                         {{ affiliate.name }}
                                     </option>
                                 </select>
+                                <select  name="network_id" v-else  v-model="form.network_id" id="network_id" class="form-control"
+                                    :class="{ 'is-invalid': form.errors.has('network_id') }">
+                                    <option value="">Ficar livre</option>
+                                    <option v-for="available in availables" :key="available.id" v-bind:value="available.id">
+                                        {{ available.name }}
+                                    </option>
+                                </select>
                                 <has-error :form="form" field="network_id"></has-error>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button"  class="btn btn-danger"   data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-danger"   data-dismiss="modal">Fechar</button>
                             <button v-show="editMode"  type="submit"  class="btn btn-primary" >Atualizar</button>
                             <button v-show="!editMode" type="submit"  class="btn btn-primary">Cadastrar</button>
                         </div>
@@ -117,6 +124,7 @@ export default {
       editMode: false,
       x:"",
       affiliates: {},
+      availables: {},
       cities: {},
       states: {},
       apiLocalUrl: "https://servicodados.ibge.gov.br/api/v1/localidades/estados",
@@ -143,6 +151,7 @@ export default {
     },
     editModalWindow(affiliate) {
       this.loadCities(affiliate.uf);
+      this.loadAvailable(affiliate.id)
       this.form.clear();
       this.editMode = true;
       this.form.reset();
@@ -175,6 +184,11 @@ export default {
     async loadAffiliates() {
         // data da callback - data do response - data do paginate
      await axios.get("api/affiliate").then((data) => (this.affiliates = data.data.data));
+      //pick data from controller and push it into affiliates object
+    },
+    async loadAvailable(id) {
+        // data da callback - data do response - data do paginate
+     await axios.get(`api/av/${id}`).then((data) => (this.availables = data.data));
       //pick data from controller and push it into affiliates object
     },
     loadCities(uf) {
