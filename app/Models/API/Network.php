@@ -12,7 +12,7 @@ class Network extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = ['name', 'phone', 'city', 'uf', 'email', 'network_id'];
-    protected $array_ids = array();
+    public $array_ids = array();
 
     public function godfather()
     {

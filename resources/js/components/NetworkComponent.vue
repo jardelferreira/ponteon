@@ -171,8 +171,11 @@ export default {
 
           $("#addNew").modal("hide");
         })
-        .catch(() => {
-          console.log("Error.....");
+        .catch((err) => {
+          Toast.fire({
+            icon: "success",
+            title: err.message,
+          });
         });
     },
     openModalWindow() {

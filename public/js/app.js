@@ -2075,8 +2075,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
         Fire.$emit("AfterCreatedAffiliateLoadIt");
         $("#addNew").modal("hide");
-      })["catch"](function () {
-        console.log("Error.....");
+      })["catch"](function (err) {
+        Toast.fire({
+          icon: "success",
+          title: err.message
+        });
       });
     },
     openModalWindow: function openModalWindow() {

@@ -33,11 +33,16 @@ class NetworkController extends Controller
         //
     }
 
-    public function update(NetworkRequest $request, $id)
+    public function update(Network $network ,NetworkRequest $request, $id)
     {
 
         $network = Network::findOrFail($id);
-
+        $availables = $network->available($id)->plunk('id');
+        if (array_search($id,$availables)) {
+            return response()->json([
+                'message' => 'Empresário já faz parte da rede, Atualize a página e tente novamente!'
+            ]);
+        }
         $network->update($request->all());
     }
 
