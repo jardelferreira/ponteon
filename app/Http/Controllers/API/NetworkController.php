@@ -52,7 +52,10 @@ class NetworkController extends Controller
     public function network($filiado)
     {
         $network = Network::find($filiado);
-        return new NetworkResource($network->with('filiados')->find($filiado));
+        return \view('rede',[
+            'data' => ($network->with('filiados')->find($filiado))
+        ]);
+        // return ($network->with('filiados')->find($filiado)->get());
     }
     public function available(Network $network, $filiado)
     {

@@ -28,8 +28,9 @@
                     <td>{{ affiliate.created_at | formatDate }}</td>
                     <td v-if="affiliate.godfather">{{ affiliate.godfather.name }}</td>
                     <td v-else></td>
+                    <!-- @click="showNetwork(affiliate.id)" -->
                     <td>
-                        <button class="btn btn-warning" @click="showNetwork(affiliate.id)">Ver Rede</button>
+                        <a :href="'/networks/'+affiliate.id" class="btn btn-warning" >Ver Rede</a>
                     </td>
                     <td class="btn-group" role="group">
                         <button type="button"  class="btn btn-info "  data-id="affiliate.id"  @click="editModalWindow(affiliate)">Editar</button>
